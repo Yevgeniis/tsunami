@@ -8,6 +8,9 @@ services:
         ipv4_address: 192.168.50.20
     volumes:
       - ./logs:/usr/tsunami/logs
+    depends_on:
+      -  jupyter_1
+    entrypoint: ["bash","run_script.sh"]
   jupyter_1:
     hostname: unauthenticated-jupyter-notebook_1
     image: jupyter/base-notebook

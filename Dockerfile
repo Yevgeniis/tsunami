@@ -34,8 +34,7 @@ RUN apt-get update \
     && mkdir logs/
 
 WORKDIR /usr/tsunami
-
+COPY iplist .
+COPY run_script.sh .
 COPY --from=0 /usr/tsunami /usr/tsunami
 
-ENTRYPOINT ["java", "-cp", "tsunami.jar:plugins/*", "-Dtsunami-config.location=tsunami.yaml", "com.google.tsunami.main.cli.TsunamiCli"]
-CMD ["--ip-v4-target=172.17.0.2", "--scan-results-local-output-format=JSON", "--scan-results-local-output-filename=logs/tsunami-output.json"]
