@@ -1,0 +1,26 @@
+version: "3"
+services:
+  tsunami:
+    build: .
+    restart: always
+    networks:
+      net_tsunami:
+        ipv4_address: 192.168.50.20
+    volumes:
+      - ./logs:/usr/tsunami/logs
+  jupyter_1:
+    hostname: unauthenticated-jupyter-notebook_1
+    image: jupyter/base-notebook
+    ports:
+      - "8888:8888"
+    restart: always
+    networks:
+      net_tsunami:
+        ipv4_address: 192.168.50.21
+    entrypoint: ['start-notebook.sh', '--NotebookApp.token=""']
+networks:
+  net_tsunami:
+    ipam:
+      driver: default
+      config:
+        - subnet: "192.168.50.0/24"
