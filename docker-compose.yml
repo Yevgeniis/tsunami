@@ -11,6 +11,7 @@ services:
       - ./config:/usr/tsunami/config
     depends_on:
       -  jupyter_1
+      -  jupyter_2
     entrypoint: ["bash","run_script.sh"]
     
   jupyter_1:
@@ -23,6 +24,18 @@ services:
       net_tsunami:
         ipv4_address: 192.168.50.21
     entrypoint: ['start-notebook.sh', '--NotebookApp.token=""']
+  
+  jupyter_2:
+    hostname: unauthenticated-jupyter-notebook_2
+    image: jupyter/base-notebook
+    ports:
+      - "8889:8888"
+    restart: always
+    networks:
+      net_tsunami:
+        ipv4_address: 192.168.50.22
+    entrypoint: ['start-notebook.sh', '--NotebookApp.token=""']
+
 networks:
   net_tsunami:
     ipam:
