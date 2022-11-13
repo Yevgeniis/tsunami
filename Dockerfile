@@ -34,7 +34,6 @@ RUN apt-get update \
     && mkdir logs/
 
 WORKDIR /usr/tsunami
-COPY iplist .
 COPY run_script.sh .
 COPY --from=0 /usr/tsunami /usr/tsunami
 

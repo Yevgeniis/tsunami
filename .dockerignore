@@ -19,3 +19,4 @@ README.md
 quick_start.sh
 Dockerfile
 .dockerignore
+config/
