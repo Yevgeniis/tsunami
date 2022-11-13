@@ -10,8 +10,10 @@ Tested on
   ```
 
 Installation 
-1.Download file from repository
-2.Add ip addresses to ./config/iplist
-3.run docker-compose up
+  ```
+  - 1.Download file from repository
+  - 2.Add ip addresses to ./config/iplist 
+  - 3.run docker-compose up
+  ```
 
 results of scanner will be in ./logs folder 
